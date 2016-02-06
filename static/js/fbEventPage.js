@@ -62,12 +62,14 @@ window.fbAsyncInit = function() {
                   console.log(time + ampm);
                   console.log(e.place.name);
                   console.log(e.name);
+                  console.log(e.id);
 
                   var tables = document.getElementById("table-entry-formation");
 
                   //do shit here
                   var tr = document.createElement("tr");
                   tr.className = class_num + " clickable-row";
+                  tr.setAttribute("data-href", "http://localhost:5000/events/" + e.id);
 
                   var td_event = document.createElement("td");
                   td_event_text = document.createTextNode(e.name);
@@ -88,6 +90,9 @@ window.fbAsyncInit = function() {
                   console.log(tables);
                   tables.appendChild(tr);
 
+                  $(".clickable-row").click(function() {
+                  window.document.location = $(this).data("href");
+              });
 
           		});
         	}
