@@ -4,6 +4,21 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+.gary-container{
+    padding-top: 90px;
+}
+
+.img-circle {
+    /*border-radius: 80%;*/
+    background-color: #2c3e50;
+    width: 40%;
+    height: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
 .gary-btn{
     color: #ffffff;
     background-color: #2c3e50;

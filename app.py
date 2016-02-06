@@ -28,6 +28,14 @@ def login():
 def events():
     return render_template('events.html') 
 
+@app.route('/checker')
+def checker():
+    return render_template('checker.html') 
+
+@app.route('/checkin')
+def checkin():
+    return render_template('checkin.html') 
+
 @app.route('/old')
 def home():
     return render_template('old_index.html') 
