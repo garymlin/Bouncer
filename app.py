@@ -3,12 +3,12 @@ import data_handler as data
 app = Flask(__name__)
     
 
-@app.route('/key/<string:uid>')
+@app.route('/api/key/<string:uid>')
 def generate_key(uid):
     """Get RANDOM_WORD_COUNT words and put them into DB to map to generated ID."""
     return data.set_key(uid)
 
-@app.route('/checkin/<string:uid>', methods=['POST'])
+@app.route('/api/checkin/<string:uid>', methods=['POST'])
 def try_key(uid):
     """Attempt to check in with an existing key."""
     key = request.form['passcode']
@@ -27,7 +27,7 @@ def try_key(uid):
 #    """If the current user is checked in, display everyone else who is."""
     
 
-@app.route('/person/<string:uid>/<string:metadata>')
+@app.route('/api/person/<string:uid>/<string:metadata>')
 def add_person(uid, metadata):
     store_person(uid, metadata)
 
