@@ -40,15 +40,14 @@ def events():
     """List all upcoming events for this user."""
     return render_template('events.html') 
 
-@app.route('/checker')
-def checker():
-    """When you want to check in a friend; gives you code."""
-    return render_template('checker.html') 
-
-@app.route('/checkin')
-def checkin():
-    """Where you put your code in to confirm attendane."""
-    return render_template('checkin.html') 
+@app.route('/checkin/<uid:string>')
+def register_or_get_code():
+    if is_registered(uid):
+        """When you want to check in a friend; gives you code."""
+        return render_template('checker.html')
+    else:
+        """Where you put your code in to confirm attendance."""
+        return render_template('checkin.html')
 
 @app.route('/key')
 def key():

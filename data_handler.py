@@ -42,6 +42,9 @@ def confirm_registration(key, uid):
     db.delete(KEYS_PREFIX + key)
     db.set(LINEAGE_PREFIX + uid, parent_uid)
 
+def is_registered(uid):
+    return db.exists(LINEAGE_PREFIX + uid)
+
 def store_person(uid, metadata):
     db.set(PEOPLE_PREFIX + uid, metadata)
 
