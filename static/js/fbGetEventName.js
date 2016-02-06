@@ -24,7 +24,7 @@ window.fbAsyncInit = function() {
     	pathh.slice(pathh.lastIndexOf('/')),
     	function (response) {
       	if (response && !response.error) {
-        	// what do reponse.data.name = event name
+        	// what do reponse.name = event name
       	}
     }
 );
