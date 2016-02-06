@@ -35,7 +35,7 @@ var stalk = function(response) {
           (events = response.data.filter(function(e) {
           	return Date.parse(e.start_time)-3600000 < Date.now() && Date.now() < Date.parse(e.end_time)+3600000;
           })).forEach(function(e) {
-          	
+          	 // 
           });
         }
       }
