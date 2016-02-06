@@ -9,7 +9,7 @@ RANDOM_WORD_URL = 'http://randomword.setgetgo.com/get.php'
 # prefixes to identify 'tables' in redis
 KEYS_PREFIX = 'key:' # unused keys that can be used to verify checkins
 PEOPLE_PREFIX = 'people:' # information on users from Facebook
-LINEAGE_PREFIX = 'parent:' # who checked who in
+LINEAGE_PREFIX = 'verified:' # who checked who in, new user mapped to parent
 
 db = redis.Redis()
 try:
