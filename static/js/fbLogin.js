@@ -24,6 +24,6 @@ window.fbAsyncInit = function() {
 	});
 }
 var goToCheckIn = function() {
-	window.location.href += 'checker';
+	window.location.href += 'checkin';
 }
 
