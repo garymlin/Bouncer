@@ -6,29 +6,6 @@
 <body>
 
 <script>
-window.fbAsyncInit = function() {
-    FB.init({
-        appId      : '1678482825757904',
-        xfbml      : true,
-        version    : 'v2.5'
-    });
-    
-    //login
-    FB.getLoginStatus(function(response) {
-      if (response.status === 'connected') {
-        var accessToken = response.authResponse.accessToken;
-        console.log('Logged in.');
-        // console.log(accessToken);
-        user();
-        event();
-        family();
-      }
-      else {
-        FB.login();
-      }
-    });
-
-};
 
 (function(d, s, id){
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -38,43 +15,43 @@ window.fbAsyncInit = function() {
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-function event() {
-    //events
-    FB.api(
-        "/10207677670636362/events",
-        function (response) {
-          if (response && !response.error) {
-            console.log(response.data);
-            console.log("data?");
-          }
-          else {
-            console.log("FUCK");
-          }
+var userID;
+window.fbAsyncInit = function() {
+  FB.init({
+        appId      : '1678482825757904',
+        xfbml      : true,
+        version    : 'v2.5'
+  });
+
+  //login
+  FB.getLoginStatus(function(response) {
+    if (response.status === 'connected') {
+        // console.log('Logged in.');
+        userID = response.authResponse.userID;
+        console.log(userID);
+        user();
+        stalk();
+      } else {
+        FB.login(stalk, {scope: 'user_events'});
+      }
+  });
+};
+
+var stalk = function(response)  {
+  //events
+  FB.api(
+      "/" + userID + "/events",
+      function (response) {
+        if (response && !response.error) {
+          console.log(response.data);
+          // console.log("data?");
+        } else {
+          console.log("FUCK EVENTS");
         }
-    );
+      }
+  );
 }
 
-function user() {
-    FB.api(
-        "/10207677670636362",
-        function (response) {
-          if (response && !response.error) {
-            console.log(response);
-          }
-        }
-    );
-}
-
-function family() {
-    FB.api(
-        "/10207677670636362/family",
-        function (response) {
-          if (response && !response.error) {
-            console.log(response.data);
-          }
-        }
-    );
-}
 </script>
 
 <div
