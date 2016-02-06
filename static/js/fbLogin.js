@@ -26,4 +26,3 @@ window.fbAsyncInit = function() {
 var goToCheckIn = function() {
 	window.location.href += 'checkin';
 }
-
