@@ -2,7 +2,7 @@ import requests
 import redis
 import sys
 
-RANDOM_WORD_COUNT = 4
+RANDOM_WORD_COUNT = 1 
 EXPIRATION_TIME_SECONDS = 60
 RANDOM_WORD_URL = 'http://randomword.setgetgo.com/get.php'
 

@@ -40,7 +40,7 @@ def events():
     """List all upcoming events for this user."""
     return render_template('events.html') 
 
-@app.route('/checkin/<uid:string>')
+@app.route('/checkin/<string:uid>')
 def register_or_get_code():
     if is_registered(uid):
         """When you want to check in a friend; gives you code."""
