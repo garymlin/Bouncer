@@ -19,7 +19,10 @@ window.fbAsyncInit = function() {
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
         userID = response.authResponse.userID;
-        FB.api(window.location.pathname.slice(window.location.pathname.lastIndexOf('/')) + "/admins",
+        FB.api(window.location.pathname.slice(window.location.pathname.lastIndexOf('/')),
+          function(ev) {
+              $(party).text(ev.name);
+              FB.api(window.location.pathname.slice(window.location.pathname.lastIndexOf('/')) + "/admins",
           function(response) {
             for(var i = 0; i < response.data.length; i++) {
               if(response.data[i].id === userID) {
@@ -42,9 +45,11 @@ window.fbAsyncInit = function() {
                   window.location.href = window.location.origin + '/checker/' + userID + '/events' + window.location.pathname.slice(window.location.pathname.lastIndexOf('/'));
                 }
           });
-            
           });
         });
+          });
+
+        
     } else {
         	// go back to login page
         	window.location.href = window.location.origin;

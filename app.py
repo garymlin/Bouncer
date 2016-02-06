@@ -2,7 +2,6 @@ from flask import Flask, render_template, request
 import data_handler as data
 app = Flask(__name__)
     
-
 @app.route('/api/key/<string:uid>')
 def generate_key(uid):
     """Get RANDOM_WORD_COUNT words and put them into DB to map to generated ID."""
@@ -12,7 +11,7 @@ def generate_key(uid):
 def try_key(uid):
     """Attempt to check in with an existing key."""
     key = request.form['passcode']
-    if not key: 
+    if not key:
         return '404'
     if (data.verify_key(key)):
         data.confirm_registration(key, uid)
@@ -24,7 +23,6 @@ def try_key(uid):
 #def get_checkedin_attendees(uid):
 #    """If the current user is checked in, display everyone else who is."""
     
-
 @app.route('/api/person/<string:uid>/<string:metadata>')
 def add_person(uid, metadata):
     store_person(uid, metadata)
@@ -69,7 +67,7 @@ def checker(uid, eid):
 
 @app.route('/key/<string:uid>/events/<string:eid>')
 def key(uid, eid):
-    return render_template('key.html') 
+    return render_template('key.html')
 
 @app.route('/old')
 def home():

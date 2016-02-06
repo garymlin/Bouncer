@@ -19,15 +19,14 @@ window.fbAsyncInit = function() {
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
         userID = response.authResponse.userID;
-        
-        $(check_in_friend).click(function() {
+        FB.api(window.location.pathname.slice(window.location.pathname.lastIndexOf('/')),
+          function(ev) {
+              $(party).text(ev.name);
+              $(check_in_friend).click(function() {
             var pathh = window.location.pathname;
             window.location.href = window.location.origin + '/key/' + userID + '/events' + pathh.slice(pathh.lastIndexOf('/'));
-          //   $(formInput).submit(function(event) {
-          //     console.log(event);
-              
-          // });
         });
+          });
     } else {
         	// go back to login page
         	window.location.href = window.location.origin;
