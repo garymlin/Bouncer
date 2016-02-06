@@ -12,10 +12,8 @@ def generate_key(uid):
 def try_key(uid):
     """Attempt to check in with an existing key."""
     key = request.form['passcode']
-
     if not key: 
         return '404'
-
     if (data.verify_key(key)):
         data.confirm_registration(key, uid)
         return '200'
@@ -41,14 +39,22 @@ def events():
     return render_template('events.html') 
 
 @app.route('/checkin/<string:uid>/events/<string:eid>')
-def register_or_get_code(uid, eid):
-    if uid == "10208965971649212":
-    # if data.is_registered(uid):
-        """When you want to check in a friend; gives you code."""
-        return render_template('checker.html')
-    else:
-        """Where you put your code in to confirm attendance."""
-        return render_template('checkin.html')
+def checkin(uid, eid):
+    return render_template('checkin.html')
+
+@app.route('/checker/<string:uid>/events/<string:eid>')
+def checker(uid, eid):
+    return render_template('checker.html')
+
+# @app.route('/checkin/<string:uid>/events/<string:eid>')
+# def register_or_get_code(uid, eid):
+#     if uid == "10208965971649212":
+#     # if data.is_registered(uid):
+#         """When you want to check in a friend; gives you code."""
+#         return render_template('checker.html')
+#     else:
+#         """Where you put your code in to confirm attendance."""
+#         return render_template('checkin.html')
 
 @app.route('/key/<string:uid>/events/<string:eid>')
 def key(uid, eid):

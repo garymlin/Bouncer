@@ -19,12 +19,13 @@ window.fbAsyncInit = function() {
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
         userID = response.authResponse.userID;
-        
+
         FB.api(window.location.pathname.slice(window.location.pathname.lastIndexOf('/')) + "/admins",
           function(response) {
             for(var i = 0; i < response.data.length; i++) {
-              if(response.data[i].id == userID) {
+              if(response.data[i].id === userID) {
                   window.location.href = window.location.origin + '/checker/' + userID + '/events' + window.location.pathname.slice(window.location.pathname.lastIndexOf('/'));
+                  return;
               }
             }
           $(checkinbutton).click(function() {
@@ -34,7 +35,11 @@ window.fbAsyncInit = function() {
                 data:$(formInput).val(),
                 sucess:function() {
                   window.location.href = window.location.origin + '/checker/' + userID + '/events' + window.location.pathname.slice(window.location.pathname.lastIndexOf('/'));
-            }
+                },
+                error:function() {
+                  console.log("request failed");
+                   window.location.href = window.location.origin + '/checker/' + userID + '/events' + window.location.pathname.slice(window.location.pathname.lastIndexOf('/'));
+                }
           });
           });
         });
