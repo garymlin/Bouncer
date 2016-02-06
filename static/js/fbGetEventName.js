@@ -24,7 +24,11 @@ window.fbAsyncInit = function() {
     	pathh.slice(pathh.lastIndexOf('/')),
     	function (response) {
       	if (response && !response.error) {
-        	// what do reponse.name = event name
+          console.log(response.name);
+          var text = document.createTextNode(response.name);
+          var event_name = document.getElementById("event-id-name");
+          console.log(name);
+          event_name.appendChild(text);
       	}
     }
 );

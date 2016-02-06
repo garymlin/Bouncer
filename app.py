@@ -40,8 +40,8 @@ def events():
     """List all upcoming events for this user."""
     return render_template('events.html') 
 
-@app.route('/checkin/<string:uid>')
-def register_or_get_code(uid):
+@app.route('/checkin/<string:uid>/events/<string:eid>')
+def register_or_get_code(uid, eid):
     if data.is_registered(uid):
         """When you want to check in a friend; gives you code."""
         return render_template('checker.html')
@@ -49,8 +49,8 @@ def register_or_get_code(uid):
         """Where you put your code in to confirm attendance."""
         return render_template('checkin.html')
 
-@app.route('/key')
-def key():
+@app.route('/key/<string:uid>/events/<string:eid>')
+def key(uid, eid):
     return render_template('key.html') 
 
 @app.route('/old')

@@ -20,9 +20,11 @@ window.fbAsyncInit = function() {
     if (response.status === 'connected') {
 
         userID = response.authResponse.userID;
+        // console.log(url);
         getKey();
         $(doneButton).click(function() {
-          window.location.href = window.location.origin + '/checkin/' + userID;
+          var pathh = window.location.pathname;
+          window.location.href = window.location.origin + '/checkin/' + userID + '/events' + pathh.slice(pathh.lastIndexOf('/'));
         });
 
 
@@ -34,7 +36,7 @@ window.fbAsyncInit = function() {
 };
 
 function getKey() {
-  $.ajax({url: "/key/"+userID, success: function(result){
+  $.ajax({url: "api/key/"+userID, success: function(result){
         console.log(result);
         var text = document.createTextNode(result);
         var unique_key = document.getElementById("unique_key");

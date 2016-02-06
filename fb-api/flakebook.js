@@ -54,7 +54,7 @@ var eventPhoto = function(event) {
 );}
 
 function checkIn(key) {
-	$.ajax({url: "/check-in/"+userID+"/"+key.toLowerCase(), success: function(result){
+	$.ajax({url: "api/check-in/"+userID+"/"+key.toLowerCase(), success: function(result){
         if(result === '200 OK') {
         	// validation succeeded
         } else {
