@@ -27,7 +27,6 @@ window.fbAsyncInit = function() {
           window.location.href = window.location.origin + '/checkin/' + userID + '/events' + pathh.slice(pathh.lastIndexOf('/'));
         });
 
-
     } else {
           // go back to login page
           window.location.href = window.location.origin;
@@ -36,7 +35,7 @@ window.fbAsyncInit = function() {
 };
 
 function getKey() {
-  $.ajax({url: "api/key/"+userID, success: function(result){
+  $.ajax({url: "/api/key/"+userID, success: function(result){
         console.log(result);
         var text = document.createTextNode(result);
         var unique_key = document.getElementById("unique_key");
