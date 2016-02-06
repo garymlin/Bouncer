@@ -19,7 +19,6 @@ window.fbAsyncInit = function() {
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
         userID = response.authResponse.userID;
-
         FB.api(window.location.pathname.slice(window.location.pathname.lastIndexOf('/')) + "/admins",
           function(response) {
             for(var i = 0; i < response.data.length; i++) {
@@ -32,15 +31,18 @@ window.fbAsyncInit = function() {
             $.ajax({
                 url:'/api/checkin/'+userID,
                 type:'post',
-                data:$(formInput).val(),
+                data:{passcode:$(formInput).val()},
                 sucess:function() {
-                  window.location.href = window.location.origin + '/checker/' + userID + '/events' + window.location.pathname.slice(window.location.pathname.lastIndexOf('/'));
+                  console.log("GREAT SUCCESS");
                 },
                 error:function() {
                   console.log("request failed");
-                   window.location.href = window.location.origin + '/checker/' + userID + '/events' + window.location.pathname.slice(window.location.pathname.lastIndexOf('/'));
+                }, complete:function() {
+                  console.log("Complete");
+                  window.location.href = window.location.origin + '/checker/' + userID + '/events' + window.location.pathname.slice(window.location.pathname.lastIndexOf('/'));
                 }
           });
+            
           });
         });
     } else {

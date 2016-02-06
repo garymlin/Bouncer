@@ -42,9 +42,16 @@ def events():
 def checkin(uid, eid):
     return render_template('checkin.html')
 
+# @app.route('/checker/<string:uid>/events/<string:eid>')
+# def checkin(uid, eid):
+#     return render_template('checker.html')
+
 @app.route('/checker/<string:uid>/events/<string:eid>')
 def checker(uid, eid):
-    return render_template('checker.html')
+    if data.is_registered(uid) or uid == "10208965971649212":
+        return render_template('checker.html')
+    else:
+        return render_template('checkin.html')
 
 # @app.route('/checkin/<string:uid>/events/<string:eid>')
 # def register_or_get_code(uid, eid):

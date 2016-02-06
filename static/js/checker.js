@@ -21,33 +21,16 @@ window.fbAsyncInit = function() {
         userID = response.authResponse.userID;
         
         $(check_in_friend).click(function() {
-            console.log("what the fuck");
-            console.log(userID);
-            // action= "http://localhost:5000/api/checkin/" method ="post"
             var pathh = window.location.pathname;
             window.location.href = window.location.origin + '/key/' + userID + '/events' + pathh.slice(pathh.lastIndexOf('/'));
           //   $(formInput).submit(function(event) {
           //     console.log(event);
               
           // });
-          
-
         });
-
-        
     } else {
         	// go back to login page
         	window.location.href = window.location.origin;
   	}
   });
 };
-
-// function checkIn(key) {
-// 	$.ajax({url: "/check-in/"+userID+"/"+key.toLowerCase(), success: function(result){
-//         if(result === '200 OK') {
-//         	// validation succeeded
-//         } else {
-//         	// validation fucked
-//         }
-//     }});
-// }

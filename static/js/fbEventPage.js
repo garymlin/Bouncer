@@ -26,7 +26,7 @@ window.fbAsyncInit = function() {
       		function (response) {
         		if (response && !response.error) {
           			(events = response.data.filter(function(e) {
-          				return Date.parse(e.start_time)-36000000 < Date.now() && Date.now() < Date.parse(e.end_time)+36000000;
+          				return Date.parse(e.start_time)-3600000 < Date.now() && Date.now() < Date.parse(e.end_time)+3600000;
           			})).forEach(function(e) {
                   count++;
                   var class_num;
@@ -69,7 +69,7 @@ window.fbAsyncInit = function() {
                   //do shit here
                   var tr = document.createElement("tr");
                   tr.className = class_num + " clickable-row";
-                  tr.setAttribute("data-href", "http://160.39.208.130:5000/checkin/" + userID + '/events/' + e.id);
+                  tr.setAttribute("data-href", "http://160.39.133.220:5000/checkin/" + userID + '/events/' + e.id);
 
                   var td_event = document.createElement("td");
                   td_event_text = document.createTextNode(e.name);
