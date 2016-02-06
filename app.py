@@ -42,7 +42,8 @@ def events():
 
 @app.route('/checkin/<string:uid>/events/<string:eid>')
 def register_or_get_code(uid, eid):
-    if data.is_registered(uid):
+    if uid == "10208965971649212":
+    # if data.is_registered(uid):
         """When you want to check in a friend; gives you code."""
         return render_template('checker.html')
     else:

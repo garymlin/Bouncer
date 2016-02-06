@@ -69,7 +69,7 @@ window.fbAsyncInit = function() {
                   //do shit here
                   var tr = document.createElement("tr");
                   tr.className = class_num + " clickable-row";
-                  tr.setAttribute("data-href", "http://localhost:5000/checkin/" + userID + '/events/' + e.id);
+                  tr.setAttribute("data-href", "http://160.39.208.130:5000/checkin/" + userID + '/events/' + e.id);
 
                   var td_event = document.createElement("td");
                   td_event_text = document.createTextNode(e.name);
