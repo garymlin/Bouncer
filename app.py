@@ -33,6 +33,10 @@ def add_person(uid, metadata):
 def login():
     return render_template('login.html') 
 
+@app.route('/render')
+def render():
+    return render_template('render.html') 
+
 @app.route('/events')
 def events():
     """List all upcoming events for this user."""
