@@ -20,7 +20,6 @@ window.fbAsyncInit = function() {
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
         userID = response.authResponse.userID;
-        stalk();
         FB.api(
       		"/" + userID + "/events",
       		function (response) {
@@ -35,7 +34,7 @@ window.fbAsyncInit = function() {
   	);
       } else {
         // go backl to login page
-        FB.login(stalk, {scope: 'user_events'});
+        window.location.href = window.location.origin;
       }
   });
 };
