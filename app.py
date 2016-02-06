@@ -42,7 +42,7 @@ def events():
 
 @app.route('/checkin/<string:uid>')
 def register_or_get_code(uid):
-    if is_registered(uid):
+    if db.is_registered(uid):
         """When you want to check in a friend; gives you code."""
         return render_template('checker.html')
     else:
