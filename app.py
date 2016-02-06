@@ -42,6 +42,10 @@ def checker():
 def checkin():
     return render_template('checkin.html') 
 
+@app.route('/key')
+def key():
+    return render_template('key.html') 
+
 @app.route('/old')
 def home():
     return render_template('old_index.html') 
