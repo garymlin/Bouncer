@@ -27,7 +27,6 @@ window.fbAsyncInit = function() {
                   window.location.href = window.location.origin + '/checker/' + userID + '/events' + window.location.pathname.slice(window.location.pathname.lastIndexOf('/'));
               }
             }
-          }
           $(checkinbutton).click(function() {
             $.ajax({
                 url:'/api/checkin/'+userID,
@@ -37,7 +36,7 @@ window.fbAsyncInit = function() {
                   window.location.href = window.location.origin + '/checker/' + userID + '/events' + window.location.pathname.slice(window.location.pathname.lastIndexOf('/'));
             }
           });
-          );
+          });
         });
     } else {
         	// go back to login page
