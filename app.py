@@ -8,7 +8,7 @@ def generate_key(uid):
     """Get RANDOM_WORD_COUNT words and put them into DB to map to generated ID."""
     return data.set_key(uid)
 
-@app.route('/check-in/<string:uid>', methods=['POST'])
+@app.route('/checkin/<string:uid>', methods=['POST'])
 def try_key(uid):
     """Attempt to check in with an existing key."""
     key = request.form['passcode']
@@ -22,6 +22,11 @@ def try_key(uid):
     else:
         return '404'
 
+#@app.route('/check-in/<string:uid>')
+#def get_checkedin_attendees(uid):
+#    """If the current user is checked in, display everyone else who is."""
+    
+
 @app.route('/person/<string:uid>/<string:metadata>')
 def add_person(uid, metadata):
     store_person(uid, metadata)
@@ -32,14 +37,17 @@ def login():
 
 @app.route('/events')
 def events():
+    """List all upcoming events for this user."""
     return render_template('events.html') 
 
 @app.route('/checker')
 def checker():
+    """When you want to check in a friend; gives you code."""
     return render_template('checker.html') 
 
 @app.route('/checkin')
 def checkin():
+    """Where you put your code in to confirm attendane."""
     return render_template('checkin.html') 
 
 @app.route('/old')
