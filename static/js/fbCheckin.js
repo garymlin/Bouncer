@@ -24,7 +24,7 @@ window.fbAsyncInit = function() {
           function(response) {
             for(var i = 0; i < response.data.length; i++) {
               if(response.data[i].id == userID) {
-                  window.location.href = '/checker/' + userID + '/events' + window.location.pathname.slice(window.location.pathname.lastIndexOf('/'));
+                  window.location.href = window.location.origin + '/checker/' + userID + '/events' + window.location.pathname.slice(window.location.pathname.lastIndexOf('/'));
               }
             }
           }
