@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import data_handler as data
 app = Flask(__name__)
 
@@ -21,8 +21,16 @@ def add_person(uid, metadata):
     store_person(uid, metadata)
 
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+def login():
+    return render_template('login.html') 
+
+@app.route('/events')
+def events():
+    return render_template('events.html') 
+
+@app.route('/old')
+def home():
+    return render_template('old_index.html') 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0")
